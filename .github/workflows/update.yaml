@@ -1,0 +1,19 @@
+name: update
+
+on:
+  schedule:
+    - cron: '5 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - run: ./update.fish
+        env:
+          token: ${{ github.token }}
