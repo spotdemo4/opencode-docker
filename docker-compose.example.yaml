@@ -1,0 +1,7 @@
+services:
+  opencode:
+    image: ghcr.io/spotdemo4/opencode:latest
+    container_name: opencode
+    ports:
+      - '4096:4096'
+    restart: unless-stopped
