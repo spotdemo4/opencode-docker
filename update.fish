@@ -6,6 +6,10 @@ set opencode_version (
     | jq -r '.tag_name' \
     | string trim --chars=v
 )
+if test -z "$opencode_version"
+    echo "Failed to fetch the latest OpenCode version"
+    return 1
+end
 echo "OpenCode Version: $opencode_version"
 
 set tags (
@@ -15,6 +19,10 @@ set tags (
     | jq -r '.Tags[]' \
     | string split ' '
 )
+if test -z "$tags"
+    echo "Failed to fetch existing tags from ghcr.io"
+    return 1
+end
 echo "Current Tags: $tags"
 
 for tag in $tags
