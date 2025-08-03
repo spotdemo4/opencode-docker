@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i fish -p jq skopeo
+#! nix-shell -i fish -p fish jq skopeo
 
 set opencode_version (
     curl -s https://api.github.com/repos/sst/opencode/releases/latest \
