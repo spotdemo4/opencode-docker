@@ -12,25 +12,25 @@ if test -z "$opencode_version"
 end
 echo "OpenCode Version: $opencode_version"
 
-set tags (
-    skopeo list-tags \
-    --creds trev:$token \
-    docker://ghcr.io/spotdemo4/opencode \
-    | jq -r '.Tags[]' \
-    | string split ' '
-)
-if test -z "$tags"
-    echo "Failed to fetch existing tags from ghcr.io"
-    return 1
-end
-echo "Current Tags: $tags"
+# set tags (
+#     skopeo list-tags \
+#     --creds trev:$token \
+#     docker://ghcr.io/spotdemo4/opencode \
+#     | jq -r '.Tags[]' \
+#     | string split ' '
+# )
+# if test -z "$tags"
+#     echo "Failed to fetch existing tags from ghcr.io"
+#     return 1
+# end
+# echo "Current Tags: $tags"
 
-for tag in $tags
-    if string match -q "$opencode_version" $tag
-        echo "Tag $tag already exists, skipping update"
-        return 0
-    end
-end
+# for tag in $tags
+#     if string match -q "$opencode_version" $tag
+#         echo "Tag $tag already exists, skipping update"
+#         return 0
+#     end
+# end
 
 echo "Tag $opencode_version does not exist, proceeding with update"
 
