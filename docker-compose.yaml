@@ -4,4 +4,6 @@ services:
     container_name: opencode
     ports:
       - '4096:4096'
+    volumes:
+      - ~/.local/share/opencode/auth.json:/root/.local/share/opencode/auth.json
     restart: unless-stopped
